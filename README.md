@@ -1,2 +1,2 @@
 # python-as-an-app
-Python Programming
+I solved some problems by using Python. Please check the questions that you need.
