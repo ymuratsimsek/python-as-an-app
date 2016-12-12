@@ -3,7 +3,7 @@
 """
 Created on Wed Nov  2 11:32:38 2016
 
-@author: yildirimmuratsimsek
+@author: ymuratsimsek
 """
 
 """
