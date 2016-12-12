@@ -1,0 +1,390 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Nov  2 11:32:38 2016
+
+@author: ymuratsimsek
+"""
+
+"""
+1. Please get the name and surname of the user. Whatever user enters his/her name & surname, your code should convert it in a regular form. For instance, alan smith should be converted to “Alan Smith” by your code. Then gender of the user should be asked separately and user’s response (M/F) should be obtained. If the gender of the user is male, you should be welcoming him as “Hello, Mr. XXXX”, if female “Hello, Mrs. XXXX”. Hint: You need to make use of if-else statements as examplified below.
+
+if (gender==”M”):
+Do_this_1....
+if (gender==”F”):
+Do_this_2....
+"""
+
+###start python code for question 1
+user_name_surname = raw_input('Enter Your Name & Surname Please: ')
+
+#check the input has leading and ending whitespaces/blanks?
+if user_name_surname != user_name_surname.strip():
+
+   #removing leading, middle and ending whitespaces/blanks by strip(),join() and split() functions
+   #making uppercase the first char of each strings by title() function 
+   user_name_surname = " ".join(user_name_surname.strip().title().split())
+   print user_name_surname.strip().title().split()
+   #assigning the name and surname
+   name = user_name_surname.strip().title().split()[0]
+   surname = user_name_surname.strip().title().split()[-1]
+
+else :
+   #removing leading, middle and ending whitespaces/blanks by strip(),join() and split() functions
+   #assigning the name and surname
+   user_name_surname = " ".join(user_name_surname.strip().title().split())
+   name = user_name_surname.strip().title().split()[0]
+   surname = user_name_surname.strip().title().split()[-1]
+   
+user_gender = raw_input('Enter Your Gender like M for male, F for female: ')
+
+#check the input, is it proper or not?
+if (user_gender.strip().lower() == "male") or (user_gender.strip().lower() == "m") :
+   user_gender = "M"
+   
+elif (user_gender.strip().lower() == "female") or (user_gender.strip().lower() == "f") :
+   user_gender = "F"
+
+else :
+   user_gender = raw_input('Please Enter A Proper Gender M/F: ')
+   if (user_gender.strip().lower() == "male") or (user_gender.strip().lower() == "m") :
+       user_gender = "M"
+   elif (user_gender.strip().lower() == "female") or (user_gender.strip().lower() == "f") :
+       user_gender = "F"
+
+if user_gender == "M" :
+   print '"Hello, Mr. '+ user_name_surname.title() + '"'
+   print '"Hello, Mr. '+ surname.title() + '"'
+
+else :
+  print '"Hello, Mrs. '+ user_name_surname.title() + '"'
+  print '"Hello, Mrs. '+ surname.title() + '"'
+###end python code for question 1
+
+######################################################################################################################
+"""
+2.You are given a long sequence of DNA code. You are responsible to record and print the number of occurences of “ATG” codes specifically that are important for determination of the gene sites. Then you need to insert the string “x” in front of and at the end of these strings in order to make them noticed more easily. For instance, the string “...AATGCC...” should be converted to “...AxATGxGCC...”. Here is the whole string:
+    ‘AATCGGCATGCCGAATTTCCGCTATGTTGCATGCATCGTACGATGCATATGCATAGAGGGCTTTTAACGATGCCCGATGATTTCATGCCCGTAACGACTCTGACGTACTG’
+Then you should clean the x’s you provided in the data. Finally you need to report the number of nucleotides that are A, T, G, C in this sequence.
+"""
+
+###start python code for question 2
+dna = "AATCGGCATGCCGAATTTCCGCTATGTTGCATGCATCGTACGATGCATATGCATAGAGGGCTTTTAACGATGCCCGATGATTTCATGCCCGTAACGACTCTGACGTACTG"
+dna_x = dna.strip().replace("ATG","xATGx")
+print "DNA with x to noticed more easily: " + dna_x
+print "number of A in DNA: "+ str(dna.count("A")) 
+print "number of T in DNA: "+ str(dna.count("T"))
+print "number of G in DNA: "+ str(dna.count("G"))
+print "number of C in DNA: "+ str(dna.count("C"))
+
+###end python code for question 2
+
+######################################################################################################################
+"""
+3. You are given a list of names below. You should be counting and printing the number of items that includes the letter “a” regardless of its occurrences in an item. For instance: the list including ‘Utku’, ‘Aynur’, ‘Tarık’, and ‘Aktan’ includes 4 a’s but 3 items in the list include a. Thus, you need to report both of these cases.
+nameList = ["Utku", "Aynur", "Tarik", "Aktan", "Asli", "Ahmet", "Metin", "Funda", "Kemal", "Hayko", "Zelal", "Kenan", "Asli", "Atakan", "Umut"]
+You need to be careful about the case-sensitive feature of python. If you count a’s in Aktan, there will be one and for A’s the result will be the same. However, the output for the occurence of a is 2. You can make use of for-loops to go over the whole list quickly. You should print both the total number of a’s and the total number of names including the target letter, a.
+"""
+
+###start python code for question 3
+nameList = ["Utku", "Aynur", "Tarik", "Aktan", "Asli", "Ahmet", "Metin", "Funda", "Kemal", "Hayko", "Zelal", "Kenan", "Asli", "Atakan", "Umut"]
+
+total_a_count = 0
+total_a_in_name_count = 0
+
+for letter in nameList :
+    if "a" in letter.lower() :
+        total_a_count = total_a_count + letter.lower().count("a")
+        total_a_in_name_count = total_a_in_name_count + 1
+
+print "The Total Number of a’s: " + str(total_a_count)
+print "The Total number of names including the target letter, a: "+ str(total_a_in_name_count)
+###end python code for question 3
+
+######################################################################################################################
+""""
+4. You should write the necessary code to obtain input from the users. The input should be a positive integer. Then your code should ask if the user wants to see the even or odd numbers. Then your code should demonstrate all of the even/odd numbers on the screen. For instance, if the user enters 7 and even as his/her choice, then your code should provide the following output:
+The even numbers up to 7
+2
+4
+6
+Hints: You need to make use of if-else statements. You can make the use of for-loops or while-loops. In order to have the raw_input as integer you need to convert it afterwards like this: A = int(raw_input(‘......’)
+"""
+
+###start python code for question 4
+while True :
+  try:
+        input_integer = int(raw_input('Enter a positive integer: '))
+        #check until user enter proper input: is the input positive integer?
+        if input_integer < 0 :
+            print "Please enter a posititve integer!\n"
+            continue
+        break
+  except ValueError:
+         print("Please enter a posititve integer, NOT STRING!\n")
+
+while True :
+        input_even_odd = raw_input('Enter even or odd: ')
+        #check until user enter proper input: is the input even or odd?
+        if (input_even_odd.lower() == "even"):
+            print "Your number is " + str(input_integer) + "and you said " + input_even_odd
+            for x in xrange(2, input_integer+1,2):
+                print x            
+            break       
+        elif (input_even_odd.lower() == "odd"):
+            print "Your number is " + str(input_integer) + "and you said " + input_even_odd
+            for x in xrange(1, input_integer,2):
+                print x
+            break
+        else:
+            print "Please enter a proper answer like EVEN or ODD! \n"
+            continue
+###end python code for question 4
+
+######################################################################################################################
+""""
+5. We did not have enough time to cover the use of functions in the class but this is a nice opportunity for us to make a slight introduction to the use of functions in python. Here is an example for the functions:
+def greet(name):
+print “Hello “, name
+Thus, when you use the function as such, greet(‘Sarah’), the output will be ‘Hello Sarah’. In this question, you are asked to write a summation function without making the use of sum function in python, of course. The name of your function could be ‘topla_gel’ (or anything else) but it should provide the summation of the integers up to the number given by the user. If the user enters 5, the function should make the necesssary calculation, 1+2+3+4+5, and the output should be 15.
+Hints: You can make the use of for-loops that we have covered in the class. Again, you code should obtain the input from the use as digit and control if there are blanks in the input, if yes please clear them.
+"""
+
+###start python code for question 5
+#check until user enter proper input: is the input an integer?
+def topla_gel(number):
+  total = 0
+  ### without using for loop: number * (number + 1) / 2
+  for x in xrange(1,number+1,1):
+        total = x + total
+  print "Total is " + str(total)  
+
+while True :
+  try:
+        input_integer = int(raw_input('Enter an integer: ').strip())       
+        topla_gel(input_integer)
+        break
+  except ValueError:
+         print("Please enter an integer, NOT STRING!\n")
+
+###end python code for question 5
+
+######################################################################################################################
+"""
+6. You are given a text that are full of words below. Your code should count the number of occurence of “ve” as conjunction. For instance, “ve” in the phrase “Ahmet ve Ayşe” is a conjunction but not in “kahve”. Then your code should convert these conjunctions to the symbol “&”. Moreover, you are suspicious about typos for the cases like “Ahmet veAyse” or “Ahmetve Ayse” or “AhmetveAyse” as well as for “kahve içtim”. Thus, you are also expected to count the number of potential typos are print the total number of these potential typos. You do not need to write a function for this but you should demonstrate them separately for detected and suspicious cases. For the text given below: if you receive problems with the Turkish characters such as “ü”, you can convert them into the similar forms like “u”.
+“Kapıdan girince sağ tarafta bir yük, onun biraz ötesinde yüksek bir konsol vardı. Konsolun üzerinde bir cam fanusun altına konulmuş eski usûl bir saat, kırmızı gaz bezleriyle örtülü, abajurlu iki petrol lambası, sarı yaldız t çerçeveli büyükçe bir ayna veaynanın üst tarafında, duvarda, kılıflarıyla asılmış bir çift çakmaklı tabanca duruyordu. Karşıda, perdeleri tamamen inik olan pencerelerin önünde, bütün duvar boyunca uzanan, üzerine halı döşeli alçak bir sedir ve sedirin köşelerinde pazen yüzlü minderlerle yastıklar, yastıkların üzerinde ise fiyango yapılmış sırma işlemeli yağlıklar vardı. Sedirle kapı arasında, ayakucu kapıya doğru bir yatak duruyor; yatağın üzeri tamamen örten veuçları biraz da yere uzanan yorganı hareketsiz iki insan vücudu kabartıyordu. Yatağın kenarında başlayıp odanın ortasına kadar yayılan ve orada ufak bir gölcük meydana getiren pıhtılaşmış kanlar bu odada birtakım hadiseler olduğunu söylüyordu.” (Sabahattin Ali – Kuyucaklı Yusuf)
+"""
+
+###start python code for question 6
+fromBook = "Kapıdan girince sag tarafta bir yuk, onun biraz otesinde yuksek bir konsol vardi. Konsolun uzerinde bir cam fanusun altına konulmus eski usul bir saat, kirmizi gaz bezleriyle ortulu, abajurlu iki petrol lambasi, sari yaldiz t cerceveli buyukce bir ayna veaynanin ust tarafinda, duvarda, kiliflariyla asilmis bir cift cakmakli tabanca duruyordu. Karsida, perdeleri tamamen inik olan pencerelerin onunde, butun duvar boyunca uzanan, uzerine hali doseli alcak bir sedir ve sedirin koselerinde pazen yuzlu minderlerle yastiklar, yastiklarin uzerinde ise fiyango yapilmis sirma islemeli yagliklar vardi. Sedirle kapı arasinda, ayakucu kapiya dogru bir yatak duruyor; yatagin uzeri tamamen orten veuclari biraz da yere uzanan yorgani hareketsiz iki insan vucudu kabartiyordu. Yatagin kenarinda baslayip odanin ortasina kadar yayilan ve orada ufak bir golcuk meydana getiren pihtilasmis kanlar bu odada birtakim hadiseler oldugunu soyluyordu.Ahmet ve Ayse, Ahmet veAyse, Ahmetve Ayse, AhmetveAyse, kahve ictim"
+
+#added extra conjunctions and  typos in the given text like "Ahmet ve Ayse, Ahmet veAyse, Ahmetve Ayse, AhmetveAyse, kahve ictim"
+#converted all turkish chars to eng char
+
+#regular expression
+import re
+#starts with 0 or more words, one white space, "ve", one white space, ends with 0 or more words
+regex = r'\w*\sve\s\w*'
+match = re.findall(regex, fromBook)
+print "“ve” conjunctions:"
+for x in match:
+    print "-> " + x
+print "Total count of “ve” as conjunction: " + str(len(match))
+
+#converting "ve" conjunctions to the symbol “&”
+import re
+regex = r'\sve\s'
+newfromBook = re.sub(regex, ' & ', fromBook)
+print newfromBook
+
+
+#suspicious about typos for the cases like “Ahmet veAyse” or “Ahmetve Ayse” or “AhmetveAyse” as well as for “kahve içtim”
+import re
+#for first regex \w*\sve\w+: starts with 0 or more words,one white space,"ve",ends with 1 or more words
+#for second regex \w+ve\s\w*: starts with 1 or more words,"ve",one white space,ends with 0 or more words
+regex = r'\w*\sve\w+|\w+ve\s\w*'
+match = re.findall(regex, fromBook)
+print "Potential typos:"
+for x in match:
+    print "-> " + x
+print "Total count of potential typos: " + str(len(match))
+###end python code for question 6
+
+######################################################################################################################
+"""
+7. We all know that the area of a triangle can easily be calculated if the height and the base are given. You will get the inputs for these parameters from the user. Then your code should calculate and print the area of this triangle. You can either do it with a function or not. The area formula is: (height * base)/2
+"""
+
+###start python code for question 7
+def triange_area(base, height):
+  print ""  
+  print "Triangle area is " + str((base * height) / 2)
+  
+while True :
+  try:
+        input_base = int(raw_input('Enter an integer for base: ').strip())        
+        if input_base < 0 :
+            print "Please enter a posititve integer!\n"
+            continue
+        break
+  except ValueError:
+         print("Please enter an integer, NOT STRING!\n")
+
+while True :
+  try:
+        input_height = int(raw_input('Enter an integer for height: ').strip())
+        if input_height < 0:
+            print "Please enter a posititve integer!\n"
+            continue
+        triange_area(input_base , input_height)
+        break
+  except ValueError:
+         print("Please enter an integer, NOT STRING!\n")
+###end python code for question 7
+
+######################################################################################################################
+"""
+8. You are given the lengths of three sides of a triangle by the user input. You should write a function that will calculate the area of this triangle with using the length of sides. There is a mathematical formula related to this.
+"""
+
+###start python code for question 8
+import math
+def triange_area(side1, side2, side3):
+  #Heron's formula 
+  #perimeter = s = (a + b + c) / 2
+  #area = √(s(s-a)(s-b)(s-c))
+  s = (side1 + side2 + side3) / 2
+  print ""
+  print "Triangle area is " + str(math.sqrt((s * (s - side1) * (s - side2) * (s - side3))))
+  
+while True :
+  try:
+        input_side1 = int(raw_input('Enter an integer for side1: ').strip())        
+        if input_side1 < 0 :
+            print "Please enter a posititve integer!\n"
+            continue
+        break
+  except ValueError:
+         print("Please enter an integer, NOT STRING!\n")
+
+while True :
+  try:
+        input_side2 = int(raw_input('Enter an integer for side2: ').strip())
+        if input_side2 < 0:
+            print "Please enter a posititve integer!\n"
+            continue
+        break
+  except ValueError:
+         print("Please enter an integer, NOT STRING!\n")
+
+while True :
+  try:
+        input_side3 = int(raw_input('Enter an integer for side3: ').strip())
+        if input_side3 < 0:
+            print "Please enter a posititve integer!\n"
+            continue
+        #side3 has to bigger than the other sides
+        elif not input_side3 > input_side1:
+            print "Side3 has to bigger than side1!\n"
+            continue
+        elif not input_side3 > input_side2:
+            print "Side3 has to bigger than side2!\n"
+            continue
+        print "side1:" + str(input_side1)
+        print "side2:" + str(input_side2)
+        print "side3:" + str(input_side3)
+        triange_area(input_side1 , input_side2 , input_side3)
+        break
+  except ValueError:
+         print("Please enter an integer, NOT STRING!\n")
+###end python code for question 8
+
+######################################################################################################################
+"""
+9. You need to get the coordinates of two points from the user. A coordinate consists of x and y values such as (1,3) for (x,y). Your code should get these x-y parameters in the form of (21,34) and should assign x = 21 and y = 34 for the first point and then similarly for the second point. Your code should then calculate the distance among these points. Hint: To calculate this distance you need to use the formula of Pythagoras.
+"""
+
+###start python code for question 9
+# user has to use parenthesis "()", comma "," and integer numbers like (10, 20) while entering inputs
+# to check this rule above, i write this fuction below
+def check_input_is_proper(): 
+ while True :
+        user_input = raw_input('Enter x and y point like (x,y): ')
+        #input has to start with "(" if not return to beginning
+        if not user_input.startswith("("):
+            print "Please enter numbers like (x,y)\n"
+            continue
+        #input has to have "," if not return to beginning        
+        elif "," not in user_input:
+            print "Please enter numbers like (x,y)\n"
+            continue
+        #input has to end with ")" if not return to beginning
+        elif not user_input.endswith(")"):
+            print "Please enter numbers like (x,y)\n"
+            continue
+        #creating x and y after some computations like removing parenthesis, comma and index operation
+        x = (''.join(user_input.replace("(","").replace(")","").split(",")[0].split()))
+        y = (''.join(user_input.replace("(","").replace(")","").split(",")[1].split()))
+        break
+
+#both x and y have to be an integer if not return to beginning
+ if (not x.isdigit()) and (not y.isdigit()) :
+            print "Please enter intergers for x and y\n"
+            check_input_is_proper()
+ elif (not x.isdigit()) and (y.isdigit()) :
+            print "Please enter an interger for x\n"
+            check_input_is_proper()            
+ elif (x.isdigit()) and (not y.isdigit()):
+            print "Please enter an integer for y\n"
+            check_input_is_proper()   
+ return x,y
+
+# the distance among two coordinate points is √c*c = √(x1 − x2)*(x1 − x2)  + (y1 − y2)*(y1 − y2)
+import math
+def distance_btw_2_points(a1,b1,a2,b2):
+    dist = ((a1 - a2) * (a1 - a2) ) + ((b1 - b2) * (b1 - b2))
+    print ""
+    print "The distance btw 2 coord. points is: "+ str(math.sqrt(dist))
+
+print "Getting first coordinate points:"
+x1, y1 = check_input_is_proper()
+print "Getting second coordinate points:"
+x2, y2 = check_input_is_proper()
+print "x1,y1 is : " + x1 + "," + y1
+print "x2,y2 is : " + x2 + "," + y2
+# convert inputs to integer
+x1 = int(x1)
+x2 = int(x2)
+y1 = int(y1)
+y2 = int(y2)
+#calling distance_btw_2_points function
+distance_btw_2_points(x1,y1,x2,y2)
+ 
+###end python code for question 9
+
+######################################################################################################################
+"""
+10. You are given a string of integers, for instance ‘685381345973’ and you are asked to find the largest number with three digits in this sequence. This number should be found from the successive items. For instance, 973 is the largest number that you can find in the given sequence but not 988 since its items (9, 8, 8) are collected from different locations. Your code should handle any given string by the user.
+"""
+
+###start python code for question 10
+while True :
+  try:
+        var1 = int(raw_input('Enter sequence of integers : ').strip())        
+        if var1 < 0 :
+            print "Please enter a posititve integer!\n"
+            continue
+        break
+  except ValueError:
+         print("Please enter an integer, NOT STRING!\n")
+
+var2 = []
+#appending every sequence in list
+for x in range(len(str(var1))):
+   if (x  < range(len(str(var1)))[-2]):
+        var2.append(str(var1)[x] + str(var1)[x+1] + str(var1)[x+2])
+        x = x + 1
+#sorting the list     
+print "The sorted list is " + str(sorted(var2))
+print "The largest number is " + str(max(var2))
+###end python code for question 10
