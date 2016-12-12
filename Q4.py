@@ -3,7 +3,7 @@
 """
 Created on Wed Nov  2 11:32:38 2016
 
-@author: yildirimmuratsimsek
+@author: ymuratsimsek
 """
 """"
 4. You should write the necessary code to obtain input from the users. The input should be a positive integer. Then your code should ask if the user wants to see the even or odd numbers. Then your code should demonstrate all of the even/odd numbers on the screen. For instance, if the user enters 7 and even as his/her choice, then your code should provide the following output:
