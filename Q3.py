@@ -3,7 +3,7 @@
 """
 Created on Wed Nov  2 11:32:38 2016
 
-@author: yildirimmuratsimsek
+@author: ymuratsimsek
 """
 """
 3. You are given a list of names below. You should be counting and printing the number of items that includes the letter “a” regardless of its occurrences in an item. For instance: the list including ‘Utku’, ‘Aynur’, ‘Tarık’, and ‘Aktan’ includes 4 a’s but 3 items in the list include a. Thus, you need to report both of these cases.
